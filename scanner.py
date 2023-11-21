@@ -3,7 +3,6 @@ import threading
 
 
 def scan_ports(host, start_port, end_port):
-    
     open_ports = []
     open_ports_lock = threading.Lock()
 
@@ -19,7 +18,7 @@ def scan_ports(host, start_port, end_port):
         except:
             pass
 
-    for port in range(start_port, end_port+1):
+    for port in range(start_port, end_port + 1):
         thread = threading.Thread(target=_scan_port, args=(host, port))
         thread.start()
 
@@ -36,6 +35,3 @@ def scan_ports(host, start_port, end_port):
             f.write("No open ports found.")
 
     return open_ports
-
-
-scan_ports("localhost", 1, 1024)
